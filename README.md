@@ -1,5 +1,8 @@
 # Public Service Digital Transformation Framework
 
+**[Live demo / docs](https://freddricklogan.github.io/public-service-digital-transformation/)** &nbsp;|&nbsp; [Portfolio](https://fredlogan.phd) &nbsp;|&nbsp; [All Projects](https://freddricklogan.github.io/projects/)
+
+
 A comprehensive framework for guiding digital transformation initiatives in public sector organizations. This repository provides methodologies, strategies, and practical templates for government agencies and public institutions seeking to modernize their service delivery through digital technologies.
 
 ## Overview
