@@ -1,0 +1,19 @@
+{
+  "name": "public-service-digital-transformation",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "lint": "eslint docs/assets tests",
+    "test": "vitest run",
+    "coverage": "vitest run --coverage",
+    "check": "npm run lint && vitest run --coverage && uv run mkdocs build --strict"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "@vitest/coverage-v8": "^3.0.0",
+    "eslint": "^9.0.0",
+    "globals": "^16.0.0",
+    "vitest": "^3.0.0"
+  }
+}

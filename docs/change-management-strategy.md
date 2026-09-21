@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Digital transformation in public sector organizations is fundamentally a human challenge. Technology implementation accounts for roughly 30% of a transformation initiative's complexity; the remaining 70% involves changing organizational culture, processes, behaviors, and mindsets. This change management strategy provides a structured approach for guiding public sector organizations through the human dimensions of digital transformation.
+Digital transformation in public sector organizations is fundamentally a human challenge. Technology implementation is the smaller part of a transformation initiative's difficulty; the larger part is changing organizational culture, processes, behaviors, and mindsets. This change management strategy provides a structured approach for guiding public sector organizations through the human dimensions of digital transformation.
 
 Government organizations face unique change management challenges: civil service protections, union agreements, political cycles, public scrutiny, and a workforce that may have operated within established systems for decades. This strategy acknowledges these realities and provides practical approaches that work within public sector constraints.
 

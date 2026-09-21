@@ -1,0 +1,5 @@
+node_modules/
+site/
+coverage/
+.venv/
+.DS_Store
