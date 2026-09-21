@@ -24,7 +24,7 @@ nav:
   - Case study: CASE_STUDY.md
 extra_css:
   - assets/shell/exec-shell.css
-  - assets/site.css
+  - assets/shell/tool.css
 extra_javascript:
   - path: assets/site.js
     type: module
@@ -33,7 +33,6 @@ extra_javascript:
   - path: assets/readiness-page.js
     type: module
 markdown_extensions:
-  - tables
   - toc:
       permalink: true
   - admonition

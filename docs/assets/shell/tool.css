@@ -1,0 +1,14 @@
+/* Tool pages (docs/tools/*): shared layout for the forms mounted by tool-page.js. Tones use the
+   Executive Shell tokens so results match the KPI strip. Row column counts come from --tool-cols. */
+.tool-form fieldset { border: 1px solid var(--md-default-fg-color--lightest); border-radius: 6px; padding: 8px 12px; margin: 0 0 12px; }
+.tool-form legend { font-weight: 600; padding: 0 6px; }
+.tool-field { margin-bottom: 12px; }
+.tool-field input, .tool-row input, .tool-row select { width: 100%; box-sizing: border-box; padding: 6px; }
+.tool-row { display: grid; grid-template-columns: var(--tool-cols, 1fr 200px); gap: 8px; align-items: center; padding: 4px 0; }
+.tool-name { font-weight: 500; }
+.tool-check { display: grid; grid-template-columns: 24px 1fr; gap: 6px; align-items: start; padding: 2px 0; }
+@media (max-width: 760px) { .tool-row { grid-template-columns: 1fr; padding: 8px 0; border-bottom: 1px solid var(--md-default-fg-color--lightest); } }
+.tool-out { border-left: 4px solid var(--md-primary-fg-color); padding: 8px 12px; margin: 12px 0; }
+.tool-headline { font-weight: 700; }
+.tool-ok { color: var(--ok); } .tool-warn { color: var(--warn); } .tool-danger { color: var(--danger); } .tool-muted { color: var(--muted); }
+.tool-status pre { white-space: pre-wrap; font-size: .8rem; }
