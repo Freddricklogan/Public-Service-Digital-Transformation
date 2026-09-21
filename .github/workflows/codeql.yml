@@ -1,4 +1,3 @@
-# TEMPLATE — copy verbatim to .github/workflows/codeql.yml in a static demo repo.
 name: CodeQL
 
 on:
@@ -23,24 +22,16 @@ jobs:
       contents: read
       security-events: write
       actions: read
-    strategy:
-      fail-fast: false
-      matrix:
-        language: [javascript]
     steps:
       - uses: actions/checkout@v4
 
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
         with:
-          languages: ${{ matrix.language }}
+          languages: javascript
           queries: security-and-quality
-
-      # Static demos have no build step; CodeQL analyses the sources directly.
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@v3
 
       - name: Perform CodeQL analysis
         uses: github/codeql-action/analyze@v3
         with:
-          category: /language:${{ matrix.language }}
+          category: /language:javascript
