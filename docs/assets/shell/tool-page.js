@@ -1,3 +1,5 @@
+import { currentScheme, onSchemeChange } from './exec-shell.js';
+
 /** Shared scaffold for the MkDocs tool pages: a subject field, the fields the tool builds, a live
  * aria-live result, and a "Copy as Markdown" button with a <pre> fallback when the clipboard is
  * unavailable. Vendored into docs/assets/shell/ next to exec-shell.js; each page supplies only its
@@ -64,16 +66,14 @@ export function mountTool(root, spec) {
   return { form, out, render };
 }
 
-/** Material for MkDocs remembers the palette it picked on first load; when the OS scheme flips,
- * switch its palette with the shell so header and body stay in the same scheme. */
+/** Keep Material for MkDocs on the same scheme as the Executive Shell: dark by default, light when the
+ * header toggle says so (the shell remembers the choice; Material's own palette memory is overridden). */
 export function followScheme() {
-  if (typeof matchMedia !== 'function') return;
-  const sync = (light) => {
-    const wanted = `(prefers-color-scheme: ${light ? 'light' : 'dark'})`;
+  const sync = (scheme) => {
+    const wanted = `(prefers-color-scheme: ${scheme})`;
     const input = document.querySelector(`input[data-md-color-media="${wanted}"]`);
     if (input && !input.checked) input.click();
   };
-  const mq = matchMedia('(prefers-color-scheme: light)');
-  mq.addEventListener('change', (e) => sync(e.matches));
-  sync(mq.matches);
+  onSchemeChange((_tokens, scheme) => sync(scheme));
+  sync(currentScheme());
 }
