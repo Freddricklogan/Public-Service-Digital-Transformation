@@ -63,3 +63,17 @@ export function mountTool(root, spec) {
   render();
   return { form, out, render };
 }
+
+/** Material for MkDocs remembers the palette it picked on first load; when the OS scheme flips,
+ * switch its palette with the shell so header and body stay in the same scheme. */
+export function followScheme() {
+  if (typeof matchMedia !== 'function') return;
+  const sync = (light) => {
+    const wanted = `(prefers-color-scheme: ${light ? 'light' : 'dark'})`;
+    const input = document.querySelector(`input[data-md-color-media="${wanted}"]`);
+    if (input && !input.checked) input.click();
+  };
+  const mq = matchMedia('(prefers-color-scheme: light)');
+  mq.addEventListener('change', (e) => sync(e.matches));
+  sync(mq.matches);
+}
