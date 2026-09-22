@@ -12,3 +12,7 @@
 .tool-headline { font-weight: 700; }
 .tool-ok { color: var(--ok); } .tool-warn { color: var(--warn); } .tool-danger { color: var(--danger); } .tool-muted { color: var(--muted); }
 .tool-status pre { white-space: pre-wrap; font-size: .8rem; }
+/* Material defaults that sit below AA: the footer copyright (fg--lighter ≈ 3:1) and inactive tab labels at .7 opacity. */
+.md-copyright, .md-copyright__highlight, .md-copyright a { color: var(--md-default-fg-color--light); }
+.md-tabs__link { opacity: .9; }
+.md-tabs__link--active, .md-tabs__link:hover { opacity: 1; }

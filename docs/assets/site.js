@@ -1,10 +1,11 @@
 /** Mounts the Executive Shell on every page; KPIs come from the tool modules, not typed in. */
 import { mountExecShell } from './shell/exec-shell.js';
-import { gotoTool } from './shell/tool-page.js';
+import { followScheme, gotoTool } from './shell/tool-page.js';
 import { DIMENSIONS, LEVELS } from './lib/maturity.js';
 import { BANDS } from './lib/readiness.js';
 
 mountExecShell({
+  theme: 'ember',
   title: 'Public Service Digital Transformation',
   tagline: 'Service design, change management, a digital maturity model, an implementation roadmap and a stakeholder readiness template for public sector organizations — published as a documentation site, with the maturity model\'s gap analysis and the readiness score implemented as tools.',
   repo: 'https://github.com/Freddricklogan/Public-Service-Digital-Transformation',
@@ -22,3 +23,4 @@ mountExecShell({
   ],
   mainSelector: '.md-main'
 });
+followScheme();
