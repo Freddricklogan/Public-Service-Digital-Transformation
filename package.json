@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "lint": "eslint docs/assets tests",
+    "lint": "eslint docs/assets tests && node docs/assets/shell/contrast-check.mjs docs/assets/shell/exec-shell.css",
     "test": "vitest run",
     "coverage": "vitest run --coverage",
     "check": "npm run lint && npm run coverage && npm run build",
