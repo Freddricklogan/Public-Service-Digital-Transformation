@@ -28,6 +28,7 @@ const FOCUSABLE =
   'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
 /** @param {string} tag @param {object} [props] @param {Array<Node|string>} [kids] */
+import { clearResume, saveResume, sessionStore, takeResume } from './tour-resume.js';
 function el(tag, props = {}, kids = []) {
   const node = document.createElement(tag);
   for (const [key, value] of Object.entries(props)) {
@@ -383,6 +384,8 @@ function buildTour(steps, tourBtn) {
     nextBtn.textContent = index === steps.length - 1 ? 'Finish' : 'Next';
 
     if (typeof step.action === 'function') {
+      // The action may load another page (a tool page); the next page resumes this step.
+      saveResume(sessionStore(), index);
       try {
         await step.action();
       } catch (err) {
@@ -479,10 +482,10 @@ function buildTour(steps, tourBtn) {
     void render();
   }
 
-  function start() {
+  function start(at = 0) {
     if (open) return;
     open = true;
-    index = 0;
+    index = Number.isInteger(at) ? at : 0;
     lastFocus = document.activeElement;
     backdrop.hidden = false;
     void render().then(() => nextBtn.focus());
@@ -491,11 +494,12 @@ function buildTour(steps, tourBtn) {
   function stop() {
     if (!open) return;
     open = false;
+    clearResume(sessionStore());
     backdrop.hidden = true;
     if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
   }
 
-  tourBtn.addEventListener('click', start);
+  tourBtn.addEventListener('click', () => start(0));
   nextBtn.addEventListener('click', next);
   prevBtn.addEventListener('click', prev);
   closeBtn.addEventListener('click', stop);
@@ -504,6 +508,9 @@ function buildTour(steps, tourBtn) {
   });
   document.addEventListener('keydown', onKeydown);
   window.addEventListener('resize', onResize);
+
+  const resumeAt = takeResume(sessionStore(), steps.length);
+  if (resumeAt !== null) start(resumeAt);
 
   return {
     start,
